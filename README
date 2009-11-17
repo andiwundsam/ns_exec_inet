@@ -1,0 +1,15 @@
+This is an experimental attempt to track the ns_exec binary
+used for running a binary in a different Linux Network 
+Namespace (NetNS). 
+
+I pulled the existing version off the git repository 
+  git://git.sr71.net/~hallyn/cr_tests.git
+which seems to track tests for the Linux Checkpoint-Restart
+-Project.
+
+Note that there is a much more comprehensive set of userlab
+tools available within the lxc project. For running 
+Containers/Namespaces in a production environment you will
+want to refer to these.
+
+ -- Andi Wundsam (b-314@wundsam.net)
