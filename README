@@ -4,7 +4,7 @@ Namespace (NetNS).
 
 Please note that I am NOT the author of ns_exec.c. I just
 found it quite difficult to find on the web. The original
-link referenced in the tutoril on the lxc website is broken
+link referenced in the tutorial on the lxc website is broken
 and there seem to be conflicting patches flying around
 -- so I though opening a git repository to track this 
 specific program might be useful for me (and possibly others).
@@ -14,7 +14,7 @@ I pulled this version of ns_exec off the git repository
 which seems to track tests for the Linux Checkpoint-Restart
 project.
 
-Note that there is a much more comprehensive set of userlab
+Note that there is a much more comprehensive set of userland
 tools available within the lxc project. For running 
 Containers/Namespaces in a production environment you will
 want to refer to these.
