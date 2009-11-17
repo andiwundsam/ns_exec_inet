@@ -116,7 +116,7 @@ int load_cgroup_dir(char *dest, int len)
 {
 	FILE *f = fopen("/proc/mounts", "r");
 	char buf[200];
-	char *name, *path, *fsname, *options, *p1, *p2, *s;
+	char *name, *path, *fsname, *options, *p1=NULL, *p2=NULL, *s;
 	if (!f)
 		return 0;
 	while (fgets(buf, 200, f)) {
@@ -231,7 +231,10 @@ int main(int argc, char *argv[])
 	procname = basename(argv[0]);
 
 	memset(ttyname, '\0', sizeof(ttyname));
-	readlink("/proc/self/fd/0", ttyname, sizeof(ttyname));
+	if(readlink("/proc/self/fd/0", ttyname, sizeof(ttyname))<0) {
+            perror("readlink /proc/self/fd/0");
+            exit(1);
+        }
 
 	while ((c = getopt(argc, argv, "+mguUiphcnf:P:")) != EOF) {
 		switch (c) {
@@ -307,7 +310,11 @@ int main(int argc, char *argv[])
 		char buf[20];
 		snprintf(buf, 20, "%d", pid);
 		close(pipefd[0]);
-		write(pipefd[1], buf, strlen(buf)+1);
+		if(write(pipefd[1], buf, strlen(buf)+1)<0) {
+                    perror("write to pipe");
+                    exit(1);
+
+                }
 		close(pipefd[1]);
 	}
 
